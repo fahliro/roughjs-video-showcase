@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Showcase Web Animasi RoughJS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0F0F0F; color: white; }
+    </style>
+</head>
+<body class="p-8">
+    <h1 class="text-3xl font-bold mb-6">Video Showcase Web Animasi RoughJS</h1>
+    <section class="mb-8 bg-gray-800 p-6 rounded-lg">
+        <h2 class="text-xl font-semibold mb-2">Informasi Proyek</h2>
+        <p><strong>Use case:</strong> demo produk, cerita pendek, draw my life, tutorial, iklan, dll</p>
+        <p><strong>Alternatif ide konsep video:</strong> pixel, vector, 3d</p>
+        <p><strong>Stack:</strong> groq whisper large v3, web chat ai, prompt (automate)</p>
+        <p><strong>Price:</strong> $0</p>
+        <p><strong>Limit video:</strong> Panjang 2 menitan (konsisten, aman, bisa lebih panjang)</p>
+        <p><strong>Editable:</strong> Ya (bagus, tidak merusak)</p>
+        <p><strong>Tested provider:</strong> deepseek, claude, gemini</p>
+        <p><strong>Kualitas video:</strong> Cukup bagus (bisa lebih baik dengan paid model)</p>
+        <p><strong>Teknik render:</strong> audio-driven</p>
+    </section>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="video-grid">
+        <!-- Cards will be populated here -->
+    </div>
+
+    <dialog id="modal" class="bg-gray-900 text-white p-6 rounded-lg w-1/2">
+        <h2 id="modal-title" class="text-2xl font-bold mb-4"></h2>
+        <p id="modal-desc" class="mb-4"></p>
+        <button onclick="document.getElementById('modal').close()" class="bg-blue-500 px-4 py-2 rounded">Tutup</button>
+    </dialog>
+
+    <script>
+        const videos = [
+            { url: "https://youtube.com/shorts/c9YYyEOqYNA?feature=share", title: "Abstract Shapes Animation", desc: "Animasi bentuk abstrak dinamis menggunakan RoughJS." },
+            { url: "https://youtube.com/shorts/UCOHrUUwQB4?feature=share", title: "Character Drawing Demo", desc: "Demonstrasi menggambar karakter dengan gaya sketsa." },
+            { url: "https://youtube.com/shorts/7U7keycb8eI?feature=share", title: "Logo Reveal Effect", desc: "Animasi reveal logo yang estetik dan unik." },
+            { url: "https://youtube.com/shorts/8bkbi4UHeCc?feature=share", title: "Data Visualization Chart", desc: "Grafik data yang divisualisasikan dengan gaya tangan." },
+            { url: "https://youtube.com/shorts/_zumvJKsxhQ?feature=share", title: "Interactive Storytelling", desc: "Pengalaman bercerita interaktif lewat animasi." },
+            { url: "https://youtube.com/shorts/RRzwc2XFxmI?feature=share", title: "Text Emphasis Animation", desc: "Animasi penekanan teks untuk konten edukasi." },
+            { url: "https://youtube.com/shorts/PxwoPIAfOIw?feature=share", title: "Product Feature Highlight", desc: "Sorotan fitur produk dengan animasi menarik." }
+        ];
+
+        const grid = document.getElementById('video-grid');
+        videos.forEach(v => {
+            const card = document.createElement('div');
+            card.className = "bg-gray-700 p-4 rounded cursor-pointer hover:bg-gray-600";
+            card.innerHTML = `<h3 class="font-bold">${v.title}</h3><p class="text-sm text-gray-300">Klik untuk detail</p>`;
+            card.onclick = () => {
+                document.getElementById('modal-title').innerText = v.title;
+                document.getElementById('modal-desc').innerText = v.desc;
+                document.getElementById('modal').showModal();
+            };
+            grid.appendChild(card);
+        });
+    </script>
+</body>
+</html>
